@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
       - name: test-app
-        image: bsgroups/test-ingress:latest
+        image: bsgroups/test-kongingress:latest
         resources:
           limits:
             memory: "128Mi"
