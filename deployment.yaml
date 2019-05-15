@@ -32,6 +32,7 @@ spec:
     app: test-app
   ports:
   - port: 1323
+    name: test-svc
     targetPort: 1323
 ---
 
@@ -135,4 +136,4 @@ spec:
       - path: /test/ingress
         backend:
           serviceName: test-ingress
-          servicePort: 1323
+          servicePort: test-svc
