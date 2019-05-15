@@ -1,6 +1,7 @@
 package main
 
 import (
+	"github.com/labstack/echo/middleware"
 	"net/http"
 
 	"github.com/labstack/echo"
@@ -8,6 +9,7 @@ import (
 
 func main() {
 	e := echo.New()
+	e.Use(middleware.Logger())
 	e.GET("/", func(c echo.Context) error {
 		return c.String(http.StatusOK, "Hello, World!")
 	})
