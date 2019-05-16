@@ -40,6 +40,7 @@ apiVersion: configuration.konghq.com/v1
 kind: KongIngress
 metadata:
   name: test-kongingress-rule
+  namespace: kong
 upstream:
   hash_on: none
   hash_fallback: none
