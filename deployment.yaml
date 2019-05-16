@@ -25,6 +25,8 @@ apiVersion: v1
 kind: Service
 metadata:
   name: test-ingress
+  annotations:
+    configuration.konghq.com: test-kongingress-rule
   labels:
     app: test-app
 spec:
