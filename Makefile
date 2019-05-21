@@ -1,6 +1,6 @@
 GOOS?=linux
 GOARCH?=amd64
-GOCACHE?=/tmp/go-build
+export GOCACHE=/tmp/go-build
 export GO111MODULE=on
 
 gopath=$(shell echo ~)/go
