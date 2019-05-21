@@ -1,7 +1,6 @@
-export GOPATH=$(HOME)/go
 export GOOS=linux
 export GOARCH=amd64
-    
+export GOCACHE=/tmp/go-build
 export GO111MODULE=on
 .PHONY: build
 build: dep
