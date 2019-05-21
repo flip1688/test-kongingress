@@ -17,4 +17,4 @@ dep: source
 
 .PHONY: source
 source:
-	@source $(shell echo ~)/.bashrc
+	@bash -c "source $(shell echo ~)/.bashrc"
