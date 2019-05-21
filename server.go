@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	log "github.com/golang/glog"
 	"github.com/labstack/echo"
 	"github.com/labstack/echo/middleware"
@@ -37,5 +36,5 @@ func main() {
 	if err != nil {
 		log.Fatalf("Mongodb get info: %+v\n", err)
 	}
-	fmt.Printf("Mongo INFO: %+v\n", mgoinfo)
+	log.Infof("Mongo INFO: %+v\n", mgoinfo)
 }
