@@ -1,3 +1,4 @@
+export GOPATH=$(echo ~)/go
 export GOOS=linux
 export GOARCH=amd64
 export GOCACHE=/tmp/go-build
