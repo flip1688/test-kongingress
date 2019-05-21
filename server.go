@@ -31,11 +31,13 @@ func main() {
 	})
 
 	seesion, err := mgo.DialWithInfo(&mgo.DialInfo{
-		Addrs:    []string{"mongo-node-1.bs-db"},
-		Database: "bslot",
-		Username: "bslot",
-		Password: "Addlink123!",
-		Timeout:  time.Second * 4,
+		Addrs:     []string{"mongo-node-1.bs-db"},
+		Database:  "bslot",
+		Source:    "bslot",
+		Mechanism: "GSSAPI",
+		Username:  "bslot",
+		Password:  "Addlink123!",
+		Timeout:   time.Second * 4,
 	})
 	if err != nil {
 		log.Fatalf("Mongodb init: %+v\n", err)
