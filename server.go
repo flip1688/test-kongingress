@@ -6,12 +6,20 @@ import (
 	"github.com/labstack/echo/middleware"
 	"gopkg.in/mgo.v2"
 	"net/http"
+	"strings"
 	"time"
 )
 
 func main() {
 	e := echo.New()
-	e.Use(middleware.LoggerWithConfig(middleware.LoggerConfig{}))
+	e.Use(middleware.LoggerWithConfig(middleware.LoggerConfig{
+		Skipper: func(c echo.Context) bool {
+			if strings.HasPrefix(c.Request().RequestURI, "/health") || strings.HasPrefix(c.Request().RequestURI, "/metrics") {
+				return true
+			}
+			return false
+		},
+	}))
 	e.GET("/", func(c echo.Context) error {
 		return c.String(http.StatusOK, "Hello, World!")
 	})
@@ -21,7 +29,7 @@ func main() {
 	e.GET("/sub-path", func(c echo.Context) error {
 		return c.String(http.StatusOK, "this is sub path")
 	})
-	e.Logger.Fatal(e.Start(":1323"))
+
 	seesion, err := mgo.DialWithInfo(&mgo.DialInfo{
 		Addrs:    []string{"mongo-node-1.bs-db"},
 		Database: "bslot",
@@ -37,4 +45,5 @@ func main() {
 		log.Fatalf("Mongodb get info: %+v\n", err)
 	}
 	log.Infof("Mongo INFO: %+v\n", mgoinfo)
+	e.Logger.Fatal(e.Start(":1323"))
 }
