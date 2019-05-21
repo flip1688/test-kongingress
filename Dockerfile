@@ -1,5 +1,5 @@
 #build a small image
-FROM busybox
+FROM scratch
 
 USER root
 WORKDIR /go/bin

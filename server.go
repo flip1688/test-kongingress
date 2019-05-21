@@ -1,6 +1,7 @@
 package main
 
 import (
+	"flag"
 	log "github.com/golang/glog"
 	"github.com/labstack/echo"
 	"github.com/labstack/echo/middleware"
@@ -11,6 +12,7 @@ import (
 )
 
 func main() {
+	flag.Parse()
 	e := echo.New()
 	e.Use(middleware.LoggerWithConfig(middleware.LoggerConfig{
 		Skipper: func(c echo.Context) bool {
@@ -29,7 +31,6 @@ func main() {
 	e.GET("/sub-path", func(c echo.Context) error {
 		return c.String(http.StatusOK, "this is sub path")
 	})
-
 	seesion, err := mgo.DialWithInfo(&mgo.DialInfo{
 		Addrs:     []string{"mongo-node-1.bs-db"},
 		Database:  "bslot",
