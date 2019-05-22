@@ -32,7 +32,7 @@ func main() {
 		return c.String(http.StatusOK, "this is sub path")
 	})
 	seesion, err := mgo.DialWithInfo(&mgo.DialInfo{
-		Addrs:    []string{"mongo-node-1.bs-db", "mongo-node-2.bs-db", "mongo-node-3.bs-db"},
+		Addrs:    []string{"mongo-node-1.bs-db:27017,mongo-node-2.bs-db:27017,mongo-node-3.bs-db:27017"},
 		Database: "bslot",
 		Source:   "bslot",
 		Username: "bslot",
@@ -47,5 +47,5 @@ func main() {
 		log.Fatalf("Mongodb get info: %+v\n", err)
 	}
 	log.Infof("Mongo INFO: %+v\n", mgoinfo)
-	e.Logger.Fatal(e.Start(":1323"))
+	//e.Logger.Fatal(e.Start(":1323"))
 }
