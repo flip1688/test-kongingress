@@ -32,13 +32,12 @@ func main() {
 		return c.String(http.StatusOK, "this is sub path")
 	})
 	seesion, err := mgo.DialWithInfo(&mgo.DialInfo{
-		Addrs:     []string{"mongo-node-1.bs-db", "mongo-node-2.bs-db", "mongo-node-3.bs-db"},
-		Database:  "bslot",
-		Source:    "bslot",
-		Mechanism: "GSSAPI",
-		Username:  "bslot",
-		Password:  "Addlink123!",
-		Timeout:   time.Second * 3,
+		Addrs:    []string{"mongo-node-1.bs-db", "mongo-node-2.bs-db", "mongo-node-3.bs-db"},
+		Database: "bslot",
+		Source:   "bslot",
+		Username: "bslot",
+		Password: "Addlink123!",
+		Timeout:  time.Second * 3,
 	})
 	if err != nil {
 		log.Fatalf("Mongodb init: %+v\n", err)
