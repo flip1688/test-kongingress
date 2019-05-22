@@ -1,6 +1,7 @@
 #build a small image
-FROM scratch
+FROM busybox
 
+USER root
 WORKDIR /go/bin
 
 COPY server /go/bin/server
